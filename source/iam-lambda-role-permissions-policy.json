@@ -1,0 +1,48 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ec2ResourceAutoTaggerObserveAnnotate",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData",
+                "ec2:DescribeInstances",
+                "ec2:DescribeVolumes"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ec2ResourceAutoTaggerCreateUpdate",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "ec2:CreateTags",
+                "logs:CreateLogGroup",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:your_aws_account_number:instance/*",
+                "arn:aws:ec2:*:your_aws_account_number:volume/*",
+                "arn:aws:logs:your_aws_region:your_aws_account_number:log-group:/aws/lambda/resource-auto-tagger:log-stream:*",
+                "arn:aws:logs:your_aws_region:your_aws_account_number:log-group:/aws/lambda/resource-auto-tagger"
+            ]
+        },
+        {
+            "Sid": "ec2ResourceAutoTaggerRead",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListRoleTags",
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:GetLogEvents",
+                "ssm:GetParametersByPath"
+            ],
+            "Resource": [
+                "arn:aws:iam::your_aws_account_number:role/*",
+                "arn:aws:logs:your_aws_region:your_aws_account_number:log-group:/aws/lambda/resource-auto-tagger:log-stream:*",
+                "arn:aws:logs:your_aws_region:your_aws_account_number:log-group:/aws/lambda/resource-auto-tagger",
+                "arn:aws:ssm:*:your_aws_account_number:parameter/*"
+            ]
+        }
+    ]
+}
