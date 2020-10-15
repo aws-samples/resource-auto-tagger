@@ -1,11 +1,6 @@
-## My Project
+## Companion source code for "Automatically tag new AWS resources based on identity or role" blog post
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+Use the Python file & AWS IAM policy files located in the "source" directory as input to build an AWS Lambda function that tags matching AWS resources as they are created.  The "Automatically tag new AWS resources based on identity or role" blog post explains this resource tagging solution.
 
 ## Security
 
